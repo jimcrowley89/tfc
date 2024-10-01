@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>The Terrifying challenge</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=0.5">
+
+		<link rel="preload" href="stylesheets/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet';this.media='screen';">
+		<link rel="preload" href="stylesheets/style.css" as="style" onload="this.onload=null;this.rel='stylesheet';this.media='screen';">
+
+		<script type="module" src="javascripts/bootstrap.min.js" defer></script>
+		<script type="text/javascript" src="javascripts/lozad.min.js" defer></script>
+		<script type="text/javascript" src="javascripts/swup.min.js" defer></script>
+		<script type="text/javascript" src="javascripts/js.js" defer></script>
+
+		<style>
+			:root { --main-color: #C61400; --main-border-color:#FF0000; }
+			* {color: #FF0000;}
+			body {padding:0; margin:0; background:black; -webkit-animation-duration: 5s; animation-duration: 5s; -webkit-animation-fill-mode: both; animation-fill-mode: both; -webkit-animation-name: fadeIn; animation-name: fadeIn;}
+			div.loader {display:flex; flex-direction:column; position:fixed; height:100vh; width:100%; align-items:center; justify-content:center; background:#000000; transition:all 0.3s; z-index:1100;}
+			div.logo {width: 80%; height: auto; padding-top: 39.94%; background: url("./images/logo_s.webp") no-repeat center center; background-size:80vmin auto;}
+			div.ring {align-items: center; position: relative; width: 100px;height: 100px; border: 5px solid #ff3d00; border-radius: 50%; border-top-color: transparent; border-bottom-color: transparent; animation: rotate 1.5s linear infinite;}
+			nav {pointer-events:none;}
+			@keyframes rotate { 100%{ transform: rotate(360deg); } }
+			@-webkit-keyframes rotate { 100%{ transform: rotate(360deg); } }
+			#Top>* {margin-bottom: 2rem;}
+			#Top>p {text-align: justify;}
+			#video-bg {transform:translate(-50%, -52%); object-fit:cover; overflow:hidden; position:fixed; height:auto; width:100%; left:50%; top:54%; z-index:-2;}
+			.bg-nav0 {background-color:black; pointer-events:auto;}
+			.bg-nav1 {background-image:linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0)); height:100px; pointer-events:none;}
+			.btn-sticky {float:right; top:2vh; right:1.6vh; border-color: red;}
+			.fadeIn {-webkit-animation-name:fadeIn; animation-name:fadeIn;}
+			.modal-backdrop.show {opacity:0.8;}
+			.modal-content {background-color: #1b1f22;}
+			.modal-header {border-bottom:1px solid red;}
+			.nav {flex-wrap:nowrap;}
+			.offcanvas {top:0; right:0; width:16.5vmin; background-color:rgba(14, 3, 3, .9); transition:transform .1s ease-in-out; visibility:hidden;}
+			.offcanvas-body {padding:0; pointer-events:auto;}
+			.transition-fade {opacity:1; transition:300ms;}
+			html.is-animating .transition-fade {opacity:0;}
+		</style>
+	</head>
+
+	<body>
+		<header>
+			<!-- Loading Screen -->
+			<div class="loader">
+				<div class="logo"></div>
+				<div class="ring"></div>
+				<noscript>
+					Javascript is required for this site. Please enable Javascript in your web browser.
+					<style> div.ring { display:none; } noscript { color: white; padding-top: 20px; }</style>
+				</noscript>
+			</div>
+
+			<!-- Advanced Rulesets Modal -->
+			<div class="modal fade" id="advancedRules" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content dark">
+				<div class="modal-header">
+					<h5 class="modal-title">Advanced Rulesets</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body row text-start">
+					<div class="col-12">
+						These are extra rules you can use to modify the way the game is played. You may choose <b>up to two</b> of the following: <br><br>
+					</div>
+					<!-- Nav buttons toggle card collapse -->
+					<div class="col-12">
+						<ul class="nav justify-content-center content">
+							<li class="nav-item">
+							  <a class="nav-link chiller btn" data-bs-toggle="collapse" data-bs-target="#laxRule" aria-expanded="false" aria-controls="laxRule"><h2>Lax</h2></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link chiller btn" data-bs-toggle="collapse" data-bs-target="#retroRule" aria-expanded="false" aria-controls="retroRule"><h2>Retro</h2></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link chiller btn" data-bs-toggle="collapse" data-bs-target="#curatorRule" aria-expanded="false" aria-controls="curatorRule"><h2>Curator</h2></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link chiller btn" data-bs-toggle="collapse" data-bs-target="#intelRule" aria-expanded="false" aria-controls="intelRule"><h2>Intel</h2></a>
+							</li>
+						</ul>
+					</div>
+					
+					<div class="card card-body col-12 collapse multi-collapse" id="laxRule">
+						<h2 class="card-title">Lax</h2>
+						If you've seen any list movie(s) within the last calendar year, you may count them as watched. Additionally with this ruleset,
+						you may perform the <b class="chiller">Terrifying Challenge</b> during any 30-day period (except the month of May).
+					</div>
+
+
+					<div class="card card-body col-12 collapse multi-collapse" id="retroRule">
+						<h1 class="card-title">Retro</h1>
+						Any of the past years' lists may be played as normal--but any Secret Film revealed before Oct. 28th does not count.
+					</div>
+
+
+					<div class="card card-body col-12 collapse multi-collapse" id="curatorRule">
+						<h2 class="card-title">Curator</h2>
+						All movies from all years count as current list movies: assemble your own <b class="chiller">Terrifying Challenge</b> this year, or use for simple substitution. Previous years'
+						Secret Films count as standard list items for the purposes of this ruleset.
+					</div>
+
+
+					<div class="card card-body col-12 collapse multi-collapse" id="intelRule">
+						<h2 class="card-title">Intel</h2>
+						If you can guess any of the Secret Films before their revelation date, you may watch and count them ahead of time. Revealing the titles to anyone else voids this ruleset.
+					</div>
+				</div>
+			</div></div></div>
+
+			<!-- Background Video -->
+			<img class="lozad" id="video-bg" data-src=videos/hallway_small.gif>
+		</header>
+
+		<!-- Navigation -->
+		<nav class="container-fluid row mx-0 my-0 justify-content-center sticky-top">
+			<!-- Navigation Header -->
+			<div class="row flex-xl-row col-8 col-lg-7 justify-content-center bg-nav0">
+				<img class="col flex-grow-0" width="213" height="120" src="./images/logo_b.webp">
+				<div class="col flex-grow-1 carousel carousel-fade d-flex" id="historyCarouselControls" data-bs-interval="false">
+					<button class="carousel-control-prev position-static" type="button" data-bs-target="#historyCarouselControls" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<div class="carousel-inner my-auto" role="group">
+						<div class="carousel-item btn-group btn-group-lg d-flex flex-nowrap">
+							<a id="2017" href="./2017" class="nav-item-year btn btn-outline-secondary">2017</a>
+							<a id="2018" href="./2018" class="nav-item-year btn btn-outline-secondary">2018</a>
+							<a id="2019" href="./2019" class="nav-item-year btn btn-outline-secondary">2019</a>
+							<a id="2020" href="./2020" class="nav-item-year btn btn-outline-secondary">2020</a>
+						</div>
+						<div class="carousel-item btn-group btn-group-lg d-flex flex-nowrap active">
+							<a id="2021" href="./2021" class="nav-item-year btn btn-outline-secondary">2021</a>
+							<a id="2022" href="./2022" class="nav-item-year btn btn-outline-secondary">2022</a>
+							<a id="2023" href="./2023" class="nav-item-year btn btn-outline-secondary">2023</a>
+						</div>
+					</div>
+					<button class="carousel-control-next position-static" type="button" data-bs-target="#historyCarouselControls" data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
+				</div>
+				<div class="col flex-grow-0 my-auto">
+					<button class="burger burger--slider" type="button" id="OpenMenu" data-bs-target="#offcanvasNavigator" aria-controls="offcanvasNavigator">
+						<span class="burger-box"><span class="burger-inner"></span></span>
+					</button>
+				</div>
+			</div>
+			<div class="col-8 col-lg-7 bg-nav1"></div>
+
+			<!-- Navigation Offcanvas -->
+			<div class="offcanvas offcanvas-collapse p-0" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasNavigator" aria-labelledby="navigation">
+				<nav class="offcanvas-body">
+					<!-- Template for Nav Button Generation -->
+					<li id="tmp_navBtn" class="nav-item btn d-none"><a class="nav-link fs-4" href="#"></a></li>
+					<ul id="navBar" class="nav flex-column h-100 justify-content-center"></ul>
+				</nav>
+			</div>
+		</nav>
+
+		<!-- Swup for seamless transitions and content replacement -->
+		<main class="transition-fade container-fluid content row justify-content-center mx-0">
+			<section class="scroll-sect col-8 col-lg-6 text-center" id="Top">
+
+				<!-- Animated banner -->
+				<video id="banner" playsinline autoplay muted loop>Your browser does not support the video tag.</video>
+
+				<h1>Welcome.</h1>
+				<p>
+					Are you ready to binge watch an unhealthy amount of horror this Halloween season? If so, then I propose a game.
+					It's called the <b class="chiller">Terrifying Challenge</b>.
+					The rules are simple: pick a few movies off the <a href="#title">list</a> below and watch them during month of October.
+					The game ends on the conclusion of Halloween night, at which point you claim your score as follows:
+				</p>
+
+				<div class="row">
+					<div class='col-6 border border-4 border-dark rounded py-5'>
+						<h2>Zombie</h2>
+						Watch three movies
+					</div>
+					<div class='col-6 border border-4 border-dark rounded py-5'>
+						<h2>Ghoul</h2>
+						Watch seven movies
+					</div>
+					<div class='col-6 border border-4 border-dark rounded py-5'>
+						<h2>Vampire</h2>
+						Watch nine movies, then two "<a href="#secret">Secret Films</a>"
+					</div>
+					<div class='col-6 border border-4 border-dark rounded py-5'>
+						<h2>Fiend</h2>
+						Watch EVERY SINGLE movie on the list
+					</div>
+				</div>
+
+				<!-- Advanced Rulesets section -->
+				<button type="button" class="btn btn-dark chiller-button py-0" data-bs-toggle="modal" data-bs-target="#advancedRules">
+					Advanced Rulesets
+				</button>
+
+				<h1>But Beware...</h1>
+				<p>
+					The <b class="chiller">Terrifying Challenge</b> is a test of sanity and endurance.
+					It is not suitable for children, your mother-in-law, or any other frail and distractible individual.
+					Only the strongest will survive...
+				</p>
+
+			</section>
+			<section id="swup" ></section>
+		</main>
+
+		<footer></footer>
+	</body>
+</html>
+
+
