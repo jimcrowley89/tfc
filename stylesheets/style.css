@@ -1,0 +1,83 @@
+/* This CSS resource incorporates links to font software which is the valuable copyrighted property of Monotype and/or its suppliers. You may not attempt to copy, install, redistribute, convert, modify or reverse engineer this font software. Please contact Monotype with any questions regarding Web Fonts: http://www.fonts.com */
+@import url("https://fast.fonts.net/lt/1.css?apiType=css&c=b842f945-9607-4447-8f38-322590814954&fontids=743416");
+@font-face { font-family:'Chiller'; src:url('chiller.woff2') format('woff2'), url('chiller.woff') format('woff'); }
+@font-face{ font-family:'Chiller W02'; src:url("Fonts/743416/d16bd4f0-fa51-451d-a5d1-ab722641aafd.woff2") format("woff2"),url("Fonts/743416/7c473e54-a744-4c59-b26d-d4327c227465.woff") format("woff"); }
+
+
+/* == Basic Styles ============================================================================= */
+a { color:rgba(109, 52, 82, 0.993); }
+a:hover { color:rgb(182, 72, 127); }
+a:active { color:#9e04e0; }
+h1, h2, .nav-item { font-family: 'Chiller'; }
+h1 { font-size:4.66vw; } /* 60 */
+h2 { font-size:3.66vw; } /* 50 */
+table { margin-left:auto; margin-right:auto; }
+tr>td:first-child { max-width:120px; text-align:right; text-overflow:ellipsis; word-break:break-all; cursor:pointer; overflow:hidden; white-space:nowrap; }
+tr>td:first-child:hover { overflow:visible; max-width:150px; }
+tr>td:nth-child(2) { text-align:left; }
+.card { display:inline-block; flex-direction:column; word-wrap:break-word; background-color:#1b1f22; border:1px solid rgba(0,0,0,.0); }
+.chiller { font-family:'Chiller'; font-size:26px; }
+.content { font-size:18px; font-family:sans-serif; line-height:1.2; }
+.entry { font-size:1rem; font-weight:900; white-space:nowrap; padding-left:auto; padding-right:auto; margin-bottom:2rem; }
+.imdb { display:block; width:64px !important; height:32px !important; background-image:url("../images/assets/imdb_.webp"); }
+.portrait { max-width:100%; max-height:600px; border-radius:20%; margin:auto; }
+.poster { max-width:250px; max-height:300px; width:100%; height:auto; aspect-ratio:0.83; }
+.poster-overlay { position:absolute; bottom:0; right:0; z-index:2; }
+.rating { display:block; height:20px !important; background-position:left; background-repeat:repeat-x; background-image:url("../images/assets/skull20.webp"); }
+.scroll-sect { position:relative; }
+.skulls-3 { width:60px !important; }
+.skulls-4 { width:80px !important; }
+.skulls-5 { width:100px !important; }
+.summary { text-align:justify; padding-bottom:6rem; }
+
+
+/* == Accordion ================================================================================ */
+.bg-dark { --bs-bg-opacity:0.25; }
+.chiller-button { font-family:'Chiller'; font-size:40px; }
+.accordion-button:focus { z-index:3; border-color:red; outline:0; box-shadow:0 0 0 0.25rem rgb(255 0 0 / 10%); }
+.accordion-button:not(.collapsed) { color:#ff0000; background-color:#212529; box-shadow:inset 0 -1px 0 rgb(0 0 0 / 13%); }
+.accordion-button.collapsed::after { background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ff3d00'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e"); }
+.accordion-button:not(.collapsed)::after {
+	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ff3d00'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+	transform: rotate(-180deg)
+}
+
+
+/* == Offcanvas Button ========================================================================= */
+.burger { border-radius:0.3rem; padding:15px 15px; display:inline-block; cursor:pointer; transition-property:opacity, filter; transition-duration:0.15s; transition-timing-function:linear; font:inherit; color:inherit; text-transform:none; background-color:transparent; border:0; margin:0; overflow:visible; }
+.burger.is-active .burger-inner,
+.burger.is-active .burger-inner::before,
+.burger.is-active .burger-inner::after { background-color:#fff; }
+.burger-box { width:40px; height:24px; display:inline-block; position:relative; }
+.burger-inner { display:block; top:50%; }
+.burger-inner, .burger-inner::before, .burger-inner::after { width:40px; height:4px; background-color:#fff; border-radius:4px; position:absolute; transition-property:transform; transition-duration:0.15s; transition-timing-function:ease; }
+.burger-inner::before, .burger-inner::after { content:""; display:block; }
+.burger-inner::before { top:-10px; }
+.burger-inner::after { bottom:-10px; }
+.burger--slider .burger-inner { top:2px; }
+.burger--slider .burger-inner::before { top:10px; transition-property:transform, opacity; transition-timing-function:ease; transition-duration:0.15s; }
+.burger--slider .burger-inner::after { top:20px; }
+.burger--slider.is-active .burger-inner { transform:translate3d(0, 10px, 0) rotate(45deg); }
+.burger--slider.is-active .burger-inner::before { transform:rotate(-45deg) translate3d(-5.71429px, -6px, 0); opacity:0; }
+.burger--slider.is-active .burger-inner::after { transform:translate3d(0, -20px, 0) rotate(-90deg); }
+
+
+/* == Offcanvas ================================================================================ */
+.nav-item { display:table; min-width:100%; min-height:50px; flex:1; -webkit-flex:1; -moz-flex:1; -ms-flex:1; border-color:var(--main-border-color); padding:0; }
+.nav-item.active { background-color:var(--main-color); }
+.nav-link { display:table-cell; color:#fff !important; padding:0; vertical-align:middle; }
+.nav-link:focus { box-shadow:0 0 0.2em 0.2em white inset; }
+
+
+/* == Scrollbars =============================================================================== */
+::-webkit-scrollbar { width:10px; }
+::-webkit-scrollbar-track { box-shadow:inset 0 0 5px grey; border-radius:10px; visibility:hidden; }
+::-webkit-scrollbar-thumb { background:rgb(51, 51, 51); border-radius:10px; }
+
+
+/* == Media Queries ============================================================================ */
+@media (hover: hover) {
+	.burger:hover { background-color:var(--main-color); }
+	.nav-item:hover { background-color:var(--main-color); }
+	.nav-link:hover { color:#fff !important; }
+}
